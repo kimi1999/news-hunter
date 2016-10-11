@@ -1,0 +1,30 @@
+
+
+.f-cb:after,
+.f-cbli li:after {
+  display: block;
+  clear: both;
+  visibility: hidden;
+  height: 0;
+  overflow: hidden;
+  content: ".";
+}
+.f-cb,
+.f-cbli li {
+  zoom: 1;
+}
+
+body {
+  background-color: #fff;
+  padding-bottom: 70px;
+  font-family: RobotoCondensed-Bold;
+}
+.mrg-top {
+  margin-top: 50px;
+}
+.ui-page-padding {
+  padding: 0px 16px;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
