@@ -14,10 +14,9 @@
       <div class="ui-page-padding ui-hunter-detail-related f-cb">
         <ul>
           <li v-for="item in nowNews.related.lists" class="related-item">
-            <news-related-word v-if="item.type=='word'" ></news-related-word>
-            <news-related-word-img-bottom v-if="item.type=='word-img-bottom'"></news-related-word-img-bottom>
-            <news-related-word-img-right v-if="item.type=='word-img-right'"></news-related-word-img-right>
-            <news-related-word-img-three v-if="item.type=='word-img-3'"></news-related-word-img-three>
+            <component v-bind:is="item.type" :news="item">
+              <!-- 一条相关新闻 -->
+            </component>
           </li>
         </ul>
       </div>
@@ -75,10 +74,10 @@
             related:{
               title: "RELATED",
               lists: [
-                {type:"word"},
-                {type:"word-img-bottom"},
-                {type:"word-img-3"},
-                {type:"word-img-right"}
+                {type:"news-related-word"},
+                {type:"news-related-word-img-right"},
+                {type:"news-related-word-img-bottom"},
+                {type:"news-related-word-img-three"}
               ]
             },
             comments:{
