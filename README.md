@@ -2,6 +2,13 @@
 
 > news hunter web version
 
+## css framework
+
+```
+git clone git@git.apuscn.com:frontend/mobile-css-framework.git src/assets/css/lib
+```
+
+
 ## Build Setup
 
 ``` bash
