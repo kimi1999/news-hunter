@@ -22,18 +22,47 @@
         </ul>
       </div>
     </section>
+
+    <!-- 评论区域 -->
+    <section class="mrg-top">
+      <!-- 评论区域块儿 标题 -->
+      <title-section :txt="nowNews.comments.title" ></title-section>
+      <title-section :txt="nowNews.comments.titleLatest" :gray="true"></title-section>
+      <ul class="ui-hunter-last-comments">
+        <li class="ui-page-padding" v-for="comment in nowNews.comments.latestLists" >
+          <news-comment-user-info :comment="comment"></news-comment-user-info>
+          <news-comment-detail :comment="comment"></news-comment-detail>
+        </li>
+      </ul>
+      <title-section :txt="nowNews.comments.titleAll" :gray="true"></title-section>
+      <ul class="ui-hunter-all-comments">
+        <li class="ui-page-padding" v-for="comment in nowNews.comments.allLists" >
+          <news-comment-user-info :comment="comment"></news-comment-user-info>
+          <news-comment-detail :comment="comment"></news-comment-detail>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 下载 引导条 -->
+    <section>
+      <news-download-bar></news-download-bar>
+    </section>
   </div>
 </template>
+
+
 
 <script lang="babel">
     import TitleSection from "./components/title-section"
     import NewsSourceTime from "./components/news-source-time"
-    import NewsManContent from "./components/news-main-content"
     import NewsLabel from "./components/news-label"
     import NewsRelatedWord from "./components/news-related-word"
     import NewsRelatedWordImgBottom from "./components/news-related-word-img-bottom"
     import NewsRelatedWordImgRight from "./components/news-related-word-img-right"
     import NewsRelatedWordImgThree from "./components/news-related-word-img-three"
+    import NewsDownloadBar from "./components/news-download-bar"
+    import newsCommentUserInfo from "./components/news-comment-user-info"
+    import newsCommentDetail from "./components/news-comment-detail"
     export default {
       data(){
         return {
@@ -51,6 +80,13 @@
                 {type:"word-img-3"},
                 {type:"word-img-right"}
               ]
+            },
+            comments:{
+              title: "COMMENTS",
+              titleLatest: "THE LATEST COMMENTS",
+              titleAll: "ALL COMMENTS",
+              latestLists: [{},{}],
+              allLists: [{},{},{}]
             }
           }
         }
@@ -58,12 +94,14 @@
       components:{
         TitleSection,
         NewsSourceTime,
-        NewsManContent,
         NewsLabel,
         NewsRelatedWord,
         NewsRelatedWordImgBottom,
         NewsRelatedWordImgRight,
-        NewsRelatedWordImgThree
+        NewsRelatedWordImgThree,
+        newsCommentUserInfo,
+        newsCommentDetail,
+        NewsDownloadBar
       },
       mounted: function(){
         //console.log(111111111);
@@ -85,5 +123,18 @@
     img{
       width: 100%;
     }
+  }
+
+  /* 新闻详情页 评论区域 */
+  .ui-hunter-last-comments:after{
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    margin: 20px 0px;
+    width: 100%;
+    padding: 0px 16px;
+    height: 1px;
+    background-color: #444;
+    opacity: .5;
   }
 </style>

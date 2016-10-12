@@ -9,7 +9,6 @@
   </div>
 </template>
 
-
 <style  lang="less">
   /* 新闻详情页 新闻标签 */
   .ui-hunter-detail-lable{
@@ -18,7 +17,7 @@
     margin-bottom: 15px;
     a{
       display: inline-block;
-      padding: 0 20px;
+      padding: 0 15px;
       margin-right: 10px;
       float: left;
       line-height:25px;

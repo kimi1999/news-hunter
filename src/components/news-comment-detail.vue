@@ -6,6 +6,14 @@
 
 
 <style  lang="less">
+  /* 新闻详情页 评论内容 */
+  .ui-comment-txt{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding-left: 50px;
+    color:rgba(68,68,68,.87);
+  }
 
 </style>
 
