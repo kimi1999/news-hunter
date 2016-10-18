@@ -32,10 +32,49 @@
                     related: {
                         title: "RELATED",
                         lists: [
-                            {type: "NewsRelatedWord"},
-                            {type: "NewsRelatedWordImgRight"},
-                            {type: "NewsRelatedWordImgBottom"},
-                            {type: "NewsRelatedWordImgThree"}
+                            {
+                              type: "NewsWord",
+                              data:{
+                                url: "https://www.baidu.com/",
+                                source: "BBC",
+                                title: "MTips For Busy WomenSmarter Food Choices 101 Tips For Busy WomenWay"
+                              }
+                            },
+                            {
+                              type: "NewsWordImgRight",
+                              data: {
+                                url: "https://www.baidu.com/",
+                                title: "MTips For Busy WomenSmarter Food Choices 101 Tips For Busy WomenWay",
+                                source: "BBC",
+                                images:[{
+                                  url: "http://static.appbox.apuslauncher.com/upload/fe/002.png"
+                                }]
+                              }
+                            },
+                            {
+                              type: "NewsWordImgThree",
+                              data: {
+                                url: "https://www.baidu.com/",
+                                title: "MTips For Busy WomenSmarter Food Choices 101 Tips For Busy WomenWay",
+                                source: "BBC",
+                                images:[
+                                  {url: "http://static.appbox.apuslauncher.com/upload/fe/002.png"},
+                                  {url: "http://static.appbox.apuslauncher.com/upload/fe/002.png"},
+                                  {url: "http://static.appbox.apuslauncher.com/upload/fe/002.png"}
+                                ]
+                              }
+                            },
+                          {
+                            type: "NewsWordImgBottom",
+                            data: {
+                              url: "https://www.baidu.com/",
+                              title: "MTips For Busy WomenSmarter Food Choices 101 Tips For Busy WomenWay",
+                              source: "BBC",
+                              images:[{
+                                url: "http://static.appbox.apuslauncher.com/upload/fe/002.png"
+                              }]
+                            }
+                          }
                         ]
                     },
                     comments: {

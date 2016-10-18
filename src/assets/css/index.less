@@ -1,7 +1,8 @@
 @import 'lib/base/reset';
 @import "lib/base/border";
 @import "lib/base/grid";
-
+@import "lib/base/layout";
+@import "lib/base/type";
 .f-cb:after,
 .f-cbli li:after {
   display: block;
@@ -29,4 +30,54 @@ body {
   width: 100%;
   height: auto;
   box-sizing: border-box;
+}
+
+
+
+
+/* 新闻详情页 相关新闻 */
+.ui-hunter-detail-related {
+  .related-item {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 10px 0;
+    a {
+      display: inline-block;
+      width: 100%;
+      height: auto;
+      color: #444;
+    }
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.news-source {
+  opacity: .5;
+  color: #444;
+  letter-spacing: 0;
+  font-size: 12px;
+  margin-top: 15px;
+}
+
+.img-con {
+  width: 102px;
+  height: 76px;
+}
+
+.img {
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+
+}
+
+.img[lazy=loaded] {
+  animation-duration: 1s;
+  animation-name: fadeIn;
+  animation-fill-mode: both;
 }

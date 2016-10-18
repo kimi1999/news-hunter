@@ -12,6 +12,7 @@
 <style  lang="less">
   /* 新闻详情页 底部 引导下载条 */
   .ui-hunter-download-bar{
+    z-index: 9999;
     display: block;
     width: 100%;
     height: 60px;
