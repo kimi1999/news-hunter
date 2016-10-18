@@ -4,7 +4,7 @@
         <div class="ui-page-padding ui-hunter-detail-related f-cb">
             <ul>
                 <li v-for="item in data" class="related-item">
-                    <component :is='item.type' :data="item.data"></component>
+                    <component :is='item.type' :data="item"></component>
                 <li>
             </ul>
         </div>

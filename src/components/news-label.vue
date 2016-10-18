@@ -3,11 +3,10 @@
 
 <template>
   <div class="ui-page-padding ui-hunter-detail-lable f-cb">
-    <a href="javascript:void(0);">Mountain Stream </a>
-    <a href="javascript:void(0);">NBA</a>
-    <a href="javascript:void(0);">Scenery</a>
+    <a v-for="tag in tags" v-bind:href="tag.url">{{tag.text}}</a>
   </div>
 </template>
+
 
 <style  lang="less">
   /* 新闻详情页 新闻标签 */
@@ -32,7 +31,7 @@
 
 <script>
     export default{
-        props:[],
+        props:["tags"],
         data(){
             return{}
         },

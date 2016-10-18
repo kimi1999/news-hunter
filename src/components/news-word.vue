@@ -1,5 +1,5 @@
 <template>
-  <a :href="data.url" @click='setVisited(this)' :class='{actived:data.clicked}'>
+  <a :href="data.ourl" @click='setVisited(this)' :class='{actived:data.clicked}'>
     <div class="ui-text-content">
       <h3 class="ui-nowrap-multi">{{data.title}}</h3>
       <!--<div class="summary ui-nowrap-multi">-->
@@ -14,7 +14,6 @@
 
 
 <style  lang="less" scoped>
-
 </style>
 
 <script lang="babel">

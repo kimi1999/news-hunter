@@ -1,5 +1,5 @@
 <template>
-  <a :href="data.url" @click='touch(this)' :class='{actived:data.clicked}'>
+  <a :href="data.ourl" @click='touch(this)' :class='{actived:data.clicked}'>
     <div class="ui-text-content muti-img">
       <h3 class="ui-nowrap-multi">{{data.title}}</h3>
       <div class="ui-row-flex">
