@@ -3,7 +3,7 @@
         <title-section :txt="data.article.title"></title-section>
         <news-source-time :source="data.article.source" :time="data.article.pubtime"></news-source-time>
         <div class="ui-page-padding ui-hunter-detail-main" v-html="data.article.body"></div>
-        <news-label :tags="data.tags"></news-label>
+        <!--<news-label :tags="data.tags"></news-label>-->
     </section>
 </template>
 <style lang="less" scoped>

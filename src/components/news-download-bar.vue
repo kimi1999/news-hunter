@@ -1,17 +1,15 @@
-
-
-
 <template>
-  <div href="javascript:void(0);" class="ui-page-padding ui-hunter-download-bar">
+  <div href="javascript:void(0);" v-show="showDownloadBar" class="ui-page-padding ui-hunter-download-bar">
     <i></i>
     <span>NEWS HUNTER</span>
-    <a href="javascript:void(0);">DOWNLOAD</a>
+    <a href="javascript:void(0);" id="downloadBtn">{{pageData.text.download}}</a>
   </div>
 </template>
 
-<style  lang="less">
+
+<style lang="less">
   /* 新闻详情页 底部 引导下载条 */
-  .ui-hunter-download-bar{
+  .ui-hunter-download-bar {
     z-index: 9999;
     display: block;
     width: 100%;
@@ -21,9 +19,8 @@
     bottom: 0;
     left: 0;
     font-size: 16px;
-    color: rgba(255,255,255,0.87);
     letter-spacing: 1px;
-    i{
+    i {
       display: inline-block;
       width: 36px;
       height: 36px;
@@ -33,21 +30,20 @@
       margin-top: 12px;
       margin-right: 10px;
     }
-
-    span,a{
+    span, a {
       display: inline-block;
       height: 60px;
       line-height: 60px;
+      color: rgba(255, 255, 255, 0.87);
     }
-    a{
+    a {
       float: right;
       height: 26px;
       line-height: 26px;
       margin-top: 14px;
-      color: rgba(255,255,255,0.87);
       margin-right: 5px;
       padding: 0px 20px;
-      border:1px solid rgba(255,255,255,0.87);
+      border: 1px solid rgba(255, 255, 255, 0.87);
       border-radius: 15px;
     }
   }
@@ -55,12 +51,29 @@
 
 <script>
     export default{
-        props:[],
+        props:['pageData'],
         data(){
-            return{}
+            return{
+              showDownloadBar: false
+            }
         },
-        mounted(){
+        watch:{
+          'pageData': function(){
+            if(this.pageData && !this.pageData.scheme){
+              this.showDownloadBar = true;
+              /* new 一个下载 引导按钮，若已安装APP 点击此按钮就打开app */
+              new apusDownloadHandel({
 
-        }
+                      clickDom: document.getElementById("downloadBtn"),
+                      androidScheme: this.pageData.scheme,
+                      iosScheme: this.pageData.scheme,
+                      androidDownloadUrl: this.pageData.downloadUrlAndroid,
+                      iosDownloadUrl: this.pageData.downloadUrlIOS
+                  });
+            }
+          }
+        },
+        mounted(){}
     }
+
 </script>

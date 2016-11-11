@@ -1,5 +1,5 @@
 <template>
-  <div class="loading ui-border-t" v-bind:style="loadingPosition">
+  <div class="loading" v-bind:style="loadingPosition">
     <i class="icon"></i>
   </div>
 </template>

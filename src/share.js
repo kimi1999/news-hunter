@@ -6,9 +6,9 @@ import VueLazyload from 'vue-lazyload'
 import VueResource from 'vue-resource'
 Vue.use(VueLazyload)
 Vue.use(VueResource)
-import DetailApp from './DetailApp'
+import ShareApp from './ShareApp'
 const app = new Vue({
-    render: (h)=>h(DetailApp)
+    render: (h)=>h(ShareApp)
 }).$mount('#app');
 
 

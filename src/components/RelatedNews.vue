@@ -1,6 +1,6 @@
 <template>
     <div class="ui-news">
-        <TitleSection txt='RELATED'></TitleSection>
+        <TitleSection :txt='titleTxt'></TitleSection>
         <div class="ui-page-padding ui-hunter-detail-related f-cb">
             <ul>
                 <li v-for="item in data" class="related-item">
@@ -22,7 +22,7 @@
     import NewsWordImgRight from "./news-word-img-right"
     import NewsWordImgThree from "./news-word-img-three"
     export default{
-        props: ['data'],
+        props: ['data','titleTxt'],
         components: {
             TitleSection,
             NewsWord,

@@ -33,9 +33,9 @@ module.exports = merge(baseWebpackConfig, {
       inject: true
     }),
     new HtmlWebpackPlugin({
-      filename: 'detail.html',
-      template: 'detail.html',
-      chunks: ["detail"],
+      filename: 'share.html',
+      template: 'share.html',
+      chunks: ["share"],
       inject: true
     })
   ]
