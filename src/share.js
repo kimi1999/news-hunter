@@ -2,7 +2,14 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 
 import Vue from 'vue'
-import Detail from './detail'
+import VueLazyload from 'vue-lazyload'
+import VueResource from 'vue-resource'
+Vue.use(VueLazyload)
+Vue.use(VueResource)
+import ShareApp from './ShareApp'
 const app = new Vue({
-    render: (h)=>h(Detail)
+    render: (h)=>h(ShareApp)
 }).$mount('#app');
+
+
+
