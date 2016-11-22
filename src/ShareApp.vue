@@ -47,15 +47,15 @@
             LoadingCenter
         },
       mounted(){
-          var testType = false;
-
+          
+          var testType = true;/* 是否为开发环境 上线时请 改为false */
           if(testType){
             var url = "http://test.feed.mynewshunter.com/mercury/news/view";
             url += "?uuid=85c23b74da33b33996469f4dcc94854f&pid=1&mdu=1&from=list&reqid=7276190432819088577&rt=1&show=11&ct=1&cnty=CN&cl=zh&chnl=0&dlv=&id=1478679122698431";
           }
           else{
             var topUrl = window.location.href,
-                url = "/mercury/news/view"+topUrl.substring(topUrl.indexOf("?")+1);
+                url = "/mercury/news/view"+topUrl.substring(topUrl.indexOf("?"));
           }
 
           this.$http.get(url).then(({data})=>{
@@ -83,26 +83,5 @@
       }
     }
 
-
-
-
-    /**
-     * 6. 将URL后面的参数转换成一个对象
-     *     url : url地址
-     */
-    function urlParamToObj(url){
-      var reg_url =/^[^\?]+\?([\w\W]+)$/,
-        reg_para=/([^&=]+)=([\w\W]*?)(&|$)/g, //g is very important
-        arr_url = reg_url.exec( url ),
-        ret        = {};
-      if( arr_url && arr_url[1] ){
-        var str_para = arr_url[1],result;
-        while((result = reg_para.exec(str_para)) != null){
-          ret[result[1]] = result[2];
-        }
-      }
-      return ret;
-
-    }
 </script>
 <style lang="less" src='assets/css/index.less'></style>

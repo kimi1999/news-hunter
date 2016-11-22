@@ -1,8 +1,9 @@
 <template>
-    <div class="ui-page-padding ui-hunter-detail-title" v-bind:class="{gray:gray}">
+    <div class="ui-page-padding ui-hunter-detail-title" v-bind:class="{gray:gray,green:green}">
         {{txt}}
     </div>
 </template>
+
 
 
 <style lang="less" scoped>
@@ -30,16 +31,43 @@
             }
         }
     }
+    .green:before{
+      background-color: #00bb94;
+    }
 </style>
 
 <script>
     export default{
         props: ["txt", "gray"],
         data(){
-            return {}
+            return {
+              green:false
+            }
         },
         mounted(){
-
+          var urlParams = urlParamToObj(window.location.href);
+          if(urlParams.pid==4){
+            this.green = true;
+          }
         }
     }
+
+    /**
+     * 6. 将URL后面的参数转换成一个对象
+     *     url : url地址
+     */
+    function urlParamToObj(url){
+      var reg_url =/^[^\?]+\?([\w\W]+)$/,
+        reg_para=/([^&=]+)=([\w\W]*?)(&|$)/g, //g is very important
+        arr_url = reg_url.exec( url ),
+        ret = {};
+      if( arr_url && arr_url[1] ){
+        var str_para = arr_url[1],result;
+        while((result = reg_para.exec(str_para)) != null){
+          ret[result[1]] = result[2];
+        }
+      }
+      return ret;
+    }
+
 </script>
