@@ -34,6 +34,10 @@
     .green:before{
       background-color: #00bb94;
     }
+    .arab .ui-hunter-detail-title:before{
+      left:auto;
+      right:0;
+    }
 </style>
 
 <script>

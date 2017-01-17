@@ -36,6 +36,7 @@
       line-height: 60px;
       color: rgba(255, 255, 255, 0.87);
     }
+
     a {
       float: right;
       height: 26px;
@@ -47,9 +48,13 @@
       border-radius: 15px;
     }
   }
+  .arab  .ui-hunter-download-bar{
+    direction: ltr;
+  }
 </style>
 
-<script>
+<script lang="babel">
+    import appDownload from "../assets/js/apus.appDownload"
     export default{
         props:['pageData'],
         data(){
@@ -70,7 +75,7 @@
               _scheme += this.pageData.localUrl;
               //console.log(_scheme);
               /* new 一个下载 引导按钮，若已安装APP 点击此按钮就打开app */
-              new apusDownloadHandel({
+              new appDownload.apusDownloadHandel({
                       clickDom: document.getElementById("downloadBtn"),
                       androidScheme: _scheme,
                       iosScheme: _scheme,
