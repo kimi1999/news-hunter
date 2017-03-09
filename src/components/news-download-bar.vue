@@ -62,30 +62,27 @@
               showDownloadBar: false
             }
         },
-        watch:{
-          'pageData': function(){
-            if(this.pageData && this.pageData.scheme){
-              this.showDownloadBar = true;
-              var urlParams = urlParamToObj(window.location.href);
-              if(urlParams.pid==4){
-                this.showDownloadBar = false;
-                return;
-              }
-              var _scheme = (this.pageData.scheme.indexOf("://")>-1) ? this.pageData.scheme : (this.pageData.scheme+"://");
-              _scheme += this.pageData.localUrl;
-              //console.log(_scheme);
-              /* new 一个下载 引导按钮，若已安装APP 点击此按钮就打开app */
-              new appDownload.apusDownloadHandel({
-                      clickDom: document.getElementById("downloadBtn"),
-                      androidScheme: _scheme,
-                      iosScheme: _scheme,
-                      androidDownloadUrl: this.pageData.downloadUrlAndroid,
-                      iosDownloadUrl: this.pageData.downloadUrlIOS
-                  });
+        mounted(){
+          if(this.pageData && this.pageData.scheme){
+            this.showDownloadBar = true;
+            var urlParams = urlParamToObj(window.location.href);
+            if(urlParams.pid==4){
+              this.showDownloadBar = false;
+              return;
             }
+            var _scheme = (this.pageData.scheme.indexOf("://")>-1) ? this.pageData.scheme : (this.pageData.scheme+"://");
+            _scheme += this.pageData.localUrl;
+            //console.log(_scheme);
+            /* new 一个下载 引导按钮，若已安装APP 点击此按钮就打开app */
+            new appDownload.apusDownloadHandel({
+              clickDom: document.getElementById("downloadBtn"),
+              androidScheme: _scheme,
+              iosScheme: _scheme,
+              androidDownloadUrl: this.pageData.downloadUrlAndroid,
+              iosDownloadUrl: this.pageData.downloadUrlIOS
+            });
           }
-        },
-        mounted(){}
+        }
     }
 
     /**
