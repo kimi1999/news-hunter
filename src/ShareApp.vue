@@ -159,7 +159,7 @@
                 domPageData : "",//php 输出在页面的 decodeURIComponent 的data数据
                 testType : testType,//是为测试（显示测试数据）
                 uA: uA,
-                hideDownloadBar: false,//是都隐藏 下载条 和相关新闻
+                hideDownloadBar: true,//是都隐藏 下载条 和相关新闻
                 //页面等待动画
                 loading:{
                   show: true,
@@ -215,12 +215,10 @@
             //console.log("php数据 未渲染");
             self.domPageData = document.getElementById("pageDataCont").innerHTML;
             const fromHtml =  document.getElementById("from").innerHTML.replace(/^[ ]+/g,"").replace(/[ ]+$/g,"");
+            self.hideDownloadBar = false;
             if(fromHtml=="detail"){
               //此时不显示 相关新闻和下载引导条
               self.hideDownloadBar = true;
-            }
-            else{
-              self.hideDownloadBar = false;
             }
           }
           else{
