@@ -159,7 +159,7 @@
                 domPageData : "",//php 输出在页面的 decodeURIComponent 的data数据
                 testType : testType,//是为测试（显示测试数据）
                 uA: uA,
-                hideDownloadBar: true,//是都隐藏 下载条 和相关新闻
+                hideDownloadBar: false,//是都隐藏 下载条 和相关新闻
                 //页面等待动画
                 loading:{
                   show: true,
