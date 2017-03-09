@@ -11,9 +11,9 @@
     .ui-hunter-detail-title {
         position: relative;
         margin-top: 20px;
-        font-size: 25px;
+        font-size: 28px;
         font-weight: bolder;
-        line-height: 30px;
+        line-height: 35px;
         &:before {
             content: "";
             height: 25px;

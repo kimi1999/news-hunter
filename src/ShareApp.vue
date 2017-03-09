@@ -179,9 +179,7 @@
         },
       mounted(){
         var self = this;
-        console.log("---");
         self.domPageData = document.getElementById("pageDataCont").innerHTML;
-        console.log(testType);
         var setPageData = function(d){
           if(typeof d == "string"){
             var data = JSON.parse(d);
