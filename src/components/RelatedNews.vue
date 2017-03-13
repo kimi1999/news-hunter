@@ -5,7 +5,7 @@
             <ul>
                 <li v-for="item in data" class="related-item">
                     <component :is='item.type' :data="item"></component>
-                <li>
+                </li>
             </ul>
         </div>
     </div>
