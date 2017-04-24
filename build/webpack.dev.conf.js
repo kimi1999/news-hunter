@@ -37,6 +37,12 @@ module.exports = merge(baseWebpackConfig, {
       template: 'share.html',
       chunks: ["share"],
       inject: true
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'share_img.html',
+      template: 'share_img.html',
+      chunks: ["share_img"],
+      inject: true
     })
   ]
 })
