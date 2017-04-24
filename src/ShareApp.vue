@@ -69,7 +69,6 @@
           if(typeof d == "string"){
             data = JSON.parse(d);
           }
-          //console.log(data);
           for(var i=0; i<data.related.length; i++){
             switch (data.related[i].images.length){
               case 0 :
