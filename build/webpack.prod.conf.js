@@ -8,6 +8,17 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var env = config.build.env
 
+
+// 入口文件 从webpack.base.conf.js 里面提出来写在这里
+baseWebpackConfig.entry = {
+  share:['./src/share.js']
+}
+baseWebpackConfig.output = {
+  path: config.build.assetsRoot,
+  publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
+  filename: '[name].js'
+}
+
 var webpackConfig = merge(baseWebpackConfig, {
     module: {
         loaders: utils.styleLoaders({sourceMap: config.build.productionSourceMap, extract: true})

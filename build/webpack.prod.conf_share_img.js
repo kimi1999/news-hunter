@@ -3,10 +3,22 @@ var config = require('../config')
 var utils = require('./utils')
 var webpack = require('webpack')
 var merge = require('webpack-merge')
-var baseWebpackConfig = require('./webpack.base.conf_share_img')
+var baseWebpackConfig = require('./webpack.base.conf')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var env = config.build.env
+
+
+// 入口文件 从webpack.base.conf.js 里面提出来写在这里
+baseWebpackConfig.entry = {
+  share_img:['./src/share_img.js']
+}
+baseWebpackConfig.output = {
+  path: config.build_share_img.assetsRoot,
+  publicPath: process.env.NODE_ENV === 'production' ? config.build_share_img.assetsPublicPath : config.dev.assetsPublicPath,
+  filename: '[name].js'
+}
+
 
 var webpackConfig = merge(baseWebpackConfig, {
   module: {
