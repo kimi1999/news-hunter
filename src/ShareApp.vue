@@ -63,6 +63,7 @@
         },
       mounted(){
         var self = this;
+
         self.domPageData = document.getElementById("pageDataCont").innerHTML;
         var setPageData = function(d){
           var data = d;
