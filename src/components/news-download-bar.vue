@@ -36,20 +36,25 @@
       line-height: 60px;
       color: rgba(255, 255, 255, 0.87);
     }
+
     a {
       float: right;
       height: 26px;
       line-height: 26px;
-      margin-top: 14px;
+      margin-top: 16px;
       margin-right: 5px;
       padding: 0px 20px;
       border: 1px solid rgba(255, 255, 255, 0.87);
       border-radius: 15px;
     }
   }
+  .arab  .ui-hunter-download-bar{
+    direction: ltr;
+  }
 </style>
 
-<script>
+<script lang="babel">
+    import appDownload from "../assets/js/apus.appDownload"
     export default{
         props:['pageData'],
         data(){
@@ -57,23 +62,44 @@
               showDownloadBar: false
             }
         },
-        watch:{
-          'pageData': function(){
-            if(this.pageData && !this.pageData.scheme){
-              this.showDownloadBar = true;
-              /* new 一个下载 引导按钮，若已安装APP 点击此按钮就打开app */
-              new apusDownloadHandel({
-
-                      clickDom: document.getElementById("downloadBtn"),
-                      androidScheme: this.pageData.scheme,
-                      iosScheme: this.pageData.scheme,
-                      androidDownloadUrl: this.pageData.downloadUrlAndroid,
-                      iosDownloadUrl: this.pageData.downloadUrlIOS
-                  });
+        mounted(){
+          if(this.pageData && this.pageData.scheme){
+            this.showDownloadBar = true;
+            var urlParams = urlParamToObj(window.location.href);
+            if(urlParams.pid==4){
+              this.showDownloadBar = false;
+              return;
             }
+            var _scheme = (this.pageData.scheme.indexOf("://")>-1) ? this.pageData.scheme : (this.pageData.scheme+"://");
+            _scheme += this.pageData.localUrl;
+            //console.log(_scheme);
+            /* new 一个下载 引导按钮，若已安装APP 点击此按钮就打开app */
+            new appDownload.apusDownloadHandel({
+              clickDom: document.getElementById("downloadBtn"),
+              androidScheme: _scheme,
+              iosScheme: _scheme,
+              androidDownloadUrl: this.pageData.downloadUrlAndroid,
+              iosDownloadUrl: this.pageData.downloadUrlIOS
+            });
           }
-        },
-        mounted(){}
+        }
     }
 
+    /**
+     * 6. 将URL后面的参数转换成一个对象
+     *     url : url地址
+     */
+    function urlParamToObj(url){
+      var reg_url =/^[^\?]+\?([\w\W]+)$/,
+        reg_para=/([^&=]+)=([\w\W]*?)(&|$)/g, //g is very important
+        arr_url = reg_url.exec( url ),
+        ret = {};
+      if( arr_url && arr_url[1] ){
+        var str_para = arr_url[1],result;
+        while((result = reg_para.exec(str_para)) != null){
+          ret[result[1]] = result[2];
+        }
+      }
+      return ret;
+    }
 </script>

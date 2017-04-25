@@ -22,12 +22,35 @@
         }
     }
 </style>
-<script>
+<script lang="babel">
     import TitleSection from "./title-section";
     import NewsSourceTime from "./news-source-time";
     import NewsLabel from "./news-label";
     export default{
         props: ['data'],
+        mounted: function(){
+
+          // 图片预站位
+          var picWidth = document.body.clientWidth - 32;
+          var imgArray = Array.prototype.slice.call(document.querySelectorAll('img'), 0);
+          imgArray.forEach(function (img) {
+            var sizeStr = img.getAttribute('data-size');
+            var size = [];
+            var src = img.getAttribute('news-image-src');
+            if (sizeStr) {
+              size = JSON.parse(sizeStr);
+              if (size[0] < 30) {
+                return
+              }
+              img.style.width = picWidth + "px";
+              img.style.height = picWidth * (size[1] / size[0]) + 'px';
+              img.style.backgroundColor = "#efefef";
+            }
+            if (src) {
+              img.setAttribute('src', src);
+            }
+          });
+        },
         components: {
             TitleSection,
             NewsSourceTime,

@@ -4,9 +4,23 @@ var path = require('path')
 module.exports = {
   build: {
     env: require('./prod.env'),
-    index: path.resolve(__dirname, '../dist/index.html'),
-    share: path.resolve(__dirname, '../dist/share.html'),
-    assetsRoot: path.resolve(__dirname, '../dist'),
+    //index: path.resolve(__dirname, '../dist/index.html'),
+    share: path.resolve(__dirname, '../dist/share/share.html'),
+    assetsRoot: path.resolve(__dirname, '../dist/share'),
+    assetsSubDirectory: 'static',
+    assetsPublicPath: '/',
+    productionSourceMap: false,
+    // Gzip off by default as many popular static hosts such as
+    // Surge or Netlify already gzip all static assets for you.
+    // Before setting to `true`, make sure to:
+    // npm install --save-dev compression-webpack-plugin
+    productionGzip: false,
+    productionGzipExtensions: ['js', 'css']
+  },
+  build_share_img: {
+    env: require('./prod.env'),
+    share_img: path.resolve(__dirname, '../dist/shareImg/share_img.html'),
+    assetsRoot: path.resolve(__dirname, '../dist/shareImg'),
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     productionSourceMap: false,

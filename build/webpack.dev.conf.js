@@ -5,6 +5,18 @@ var utils = require('./utils')
 var baseWebpackConfig = require('./webpack.base.conf')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 
+// 多个 入口文件 从webpack.base.conf.js 里面提出来写在这里
+baseWebpackConfig.entry = {
+  app: ['./src/main.js'],
+  share:['./src/share.js'],
+  share_img:['./src/share_img.js']
+}
+baseWebpackConfig.output = {
+  path: config.build.assetsRoot,
+    publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
+    filename: '[name].js'
+}
+
 // add hot-reload related code to entry chunks
 Object.keys(baseWebpackConfig.entry).forEach(function (name) {
   baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
@@ -36,6 +48,12 @@ module.exports = merge(baseWebpackConfig, {
       filename: 'share.html',
       template: 'share.html',
       chunks: ["share"],
+      inject: true
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'share_img.html',
+      template: 'share_img.html',
+      chunks: ["share_img"],
       inject: true
     })
   ]

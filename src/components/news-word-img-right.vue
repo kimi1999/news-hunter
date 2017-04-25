@@ -23,6 +23,14 @@
       height: auto;
     }
   }
+  .img-con{
+    margin-left: 10px;
+  }
+  .arab{
+    .img-con{
+      margin-right: 10px;
+    }
+  }
 </style>
 
 <script lang="babel">
