@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>news-hunter-video-模板</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <style type="text/css">
+      *{
+        padding: 0;
+        margin: 0;
+      }
+      .video-item {
+        padding-bottom: 3px;
+      }
+      .yt-iframe-wrapper {
+        width: 100%;
+        position: relative;
+        background-color: #000;
+      }
+      .ytp-hide-controls .ytp-watermark{
+        display: none!important;
+      }
+      .cover-box{
+        position: absolute;
+        top:0;
+        left: 0;
+        z-index: 999;
+        width: 100%;
+        height: 100%;
+        background-size: cover!important;
+      }
+      .cover-box .play-btn{
+        position: absolute;
+        left: 50%;
+        top:50%;
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        margin-left: -25px;
+        margin-top: -25px;
+        background: url("http://static.news.apuslauncher.com/upload/news/20170519153016fea3cad30a.png");
+        background-size: 50px 50px;
+      }
+    </style>
+    <script src="https://www.youtube.com/iframe_api"></script>
+  </head>
+  <body>
+    <div class="video-item">
+      <div class="yt-iframe-wrapper">
+        <div id="playerBox">
+
+        </div>
+        <div class="cover-box">
+          <a href="javascript:void(0)" class="play-btn" onclick="onVideoPlay()"></a>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      /* 视频配置文件 */
+      var vConfig = {
+        ratio: "360:200",//视频宽高比
+        width:360, //视频宽度
+        height:200, //视频高度
+//        video:{
+//          id: "<?= $videoId ?>", //视频id
+//          cover:"<?= $coverImg ?>"//视频封面
+//        }
+        video:{
+          id: "M7lc1UVf-VE", //视频id
+          cover:"http://static.news.apuslauncher.com/upload/news/201705191515419c9f292c2b.png"//视频封面
+        }
+      }
+
+      /* 原生js 工具函数 */
+      function getElementsByClass(sClass,elm){
+        var aResult=[];
+        var aEle=document.all ? document.all : document.getElementsByTagName('*');
+        if(elm){
+          aEle=elm.getElementsByTagName('*');
+        }
+        for(var i=0;i<aEle.length;i++){
+          /*当className相等时添加到数组中*/
+          if(aEle[i].className==sClass){
+            aResult.push(aEle[i]);
+          }
+        }
+        return aResult;
+      };
+      var videoCover = null;
+      if(true){
+        var iFrameWrappers = getElementsByClass("yt-iframe-wrapper");
+        var windowWidth = document.documentElement.clientWidth;
+        for(var i=0; i<iFrameWrappers.length; i++){
+          iFrameWrappers[i].style.height=vConfig.height*windowWidth/vConfig.width+"px";
+        }
+        var coverBox = getElementsByClass("cover-box");
+        if(coverBox[0]){
+          videoCover = coverBox[0];
+          videoCover.style.background = 'url("'+vConfig.video.cover+'")';
+        }
+      }
+
+
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('playerBox', {
+          height: '100%',
+          width: '100%',
+          videoId: vConfig.video.id,
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange,
+            'onPlaybackQualityChange': onPlayerPlaybackQualityChange,
+            'onPlaybackRateChange': onPlayerPlaybackRateChange,
+            'onError': onPlayerError,
+            'onApiChange': onPlayerApiChange
+          },
+          playerVars: {
+            'autoplay': 0,// 是否自动播放 默认：0 否； 1 是
+            'autohide': 1,//播放开始时 播放控制条是否自动隐藏 默认：1 是； 0 否
+            'rel': 0,//播放结束时 是否显示相关视频 默认：1 是； 0 否
+            'showinfo': 0,// 视频播放前是否显示视频标题和上传者信息 默认：1 是； 0 否
+            'enablejsapi': 0,// 停用Javascript API 默认：0 否； 1 是
+            'disablekb': 1,// 停用播放器键盘控件 默认：0 否； 1 是  (空格键：播放/暂停 向左箭头：当前视频后退10% 向右箭头：当前视频前进10% 向上箭头：调高音量 向下箭头：降低音量)
+            'cc_lang_pref': 1,// ???
+            //'color': 'white',//  播放器 已播放部分颜色 可选红色(不写或其他非'white' 值)/白色('white') 默认红色
+            'controls': 0,//此参数会指明视频播放器控件是否会显示  值：0、1或2。默认值为1
+            'fs': 1,//：0或1。默认值为1，该值会使全屏按钮显示。将此参数设为0会阻止全屏按钮显示。
+            'cc_load_policy': 1,// 是否显示字幕  将此值设为1会使系统在默认情况下显示字幕，即使在用户关闭字幕的情况下也是如此
+            'modestbranding':1,//播放控制条上是否显示 youtube图标 默认 0: 显示 ；1: 不显示；
+            'origin': 'https://www.youtube.com'
+          }
+        });
+      }
+
+      // (1)  播放器准备就绪
+      function onPlayerReady(event) {
+        console.log('player is ready');
+
+        //onReady('player is ready');
+        //sendDuration();
+        player.setOption("captions", "track", {"languageCode": "es"});
+        player.unloadModule("captions");
+        //设置音量0-100   getVolume() 获取音量
+        player.setVolume(30);
+        //player.setVolume([AUDIO_VOLUME]);
+      }
+
+      // (2) 播放状态改变时
+      var timerId = 0;
+      function onPlayerStateChange(event) {
+        console.log(event)
+        clearTimeout(timerId);
+        switch (event.data) {
+          case YT.PlayerState.UNSTARTED:
+            //onStateChange("UNSTARTED");
+
+            break;
+          case YT.PlayerState.ENDED:
+            //onStateChange("ENDED");
+
+            break;
+          case YT.PlayerState.PLAYING:
+            player.unloadModule("captions");
+
+            //onStateChange("PLAYING");
+            timerId = setInterval(function () {
+              //setCurrentSeconds();
+
+              //console.log(player.getCurrentTime());
+            }, 100);
+            break;
+          case YT.PlayerState.PAUSED:
+            //onStateChange("PAUSED");
+            break;
+          case YT.PlayerState.BUFFERING:
+            //onStateChange("BUFFERING");
+            break;
+          case YT.PlayerState.CUED:
+            //onStateChange("CUED");
+            break;
+        }
+      }
+
+      // (3) 视频清晰度切换时
+      function onPlayerPlaybackQualityChange(playbackQuality) {
+        console.log('playback quality changed to ' + playbackQuality.data);
+        //onPlaybackQualityChange('playback quality changed to ' + playbackQuality.data);
+      }
+
+      // (4) 播放速率改变时触发
+      function onPlayerPlaybackRateChange(playbackRate) {
+        console.log('playback rate changed to ' + playbackRate.data);
+        //onPlaybackRateChange('playback rate changed to ' + playbackRate.data);
+      }
+
+      // (5) 视频加载错误时触发
+      function onPlayerError(e) {
+        console.log('An error occurred: ' + e.data);
+        //onError('An error occurred: ' + e.data);
+      }
+
+      // (6) 播放器已利用提供的API方法加载（或已取消加载）模块
+      function onPlayerApiChange() {
+        console.log('The player API changed');
+        //onApiChange('The player API changed');
+      }
+
+      //隐藏 视频封面
+      function hideVideoCover(){
+        if(videoCover){
+          videoCover.style.display = "none";
+        }
+      }
+
+      //隐藏 视频封面
+      function showVideoCover(){
+        if(videoCover){
+          videoCover.style.display = "block";
+        }
+      }
+
+
+      /******************** 调用客户端的方法 start ********************/
+      function onReady(e) {
+        window.QualsonInterface.onReady(e);
+      }
+
+      function onStateChange(e) {
+        window.QualsonInterface.onStateChange(e);
+      }
+
+      function onPlaybackQualityChange(e) {
+        window.QualsonInterface.onPlaybackQualityChange(e);
+      }
+
+      function onPlaybackRateChange(e) {
+        window.QualsonInterface.onPlaybackRateChange(e);
+      }
+
+      function onError(e) {
+        window.QualsonInterface.onError(e);
+      }
+
+      function onApiChange(e) {
+        window.QualsonInterface.onApiChange(e);
+      }
+
+      function setCurrentSeconds() {
+        window.QualsonInterface.currentSeconds(player.getCurrentTime());
+      }
+
+      function sendDuration() {
+        window.QualsonInterface.duration(player.getDuration());
+      }
+
+      function setLog(msg) {
+        window.QualsonInterface.logs(msg);
+      }
+
+      function onSeekTo(startSeconds) {
+        player.seekTo(startSeconds, true)
+      }
+
+      function onVideoPause() {
+        player.pauseVideo();
+      }
+
+      function onVideoStop() {
+        player.stopVideo();
+      }
+
+      function onVideoPlay() {
+        player.playVideo();
+        player.setVolume([AUDIO_VOLUME]);
+      }
+
+      function onHideControls() {
+        setLog("onHideControls()");
+      }
+
+      function loadVideo(videoId, startSeconds) {
+        //setLog(videoId + "_" + startSeconds);
+        player.loadVideoById(videoId, startSeconds);
+      }
+
+      function cueVideo(videoId) {
+        //setLog(videoId);
+        player.cueVideoById(videoId, 0, "large");//视频id 起始时间 视频质量
+        player.setVolume(30);
+        //player.cueVideoById(videoId, 0, "[PLAYBACK_QUALITY]");
+        //player.setVolume([AUDIO_VOLUME]);
+      }
+
+      /******************** 调用客户端的方法 end ********************/
+    </script>
+  </body>
+</html>

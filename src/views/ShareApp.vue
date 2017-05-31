@@ -20,12 +20,12 @@
 </template>
 
 <script lang="babel">
-    import NewsArea from './components/NewsArea';
-    import NewsDownloadBar from "./components/news-download-bar";
-    import RelatedNews from './components/RelatedNews';
-    import CommentList from './components/CommentList';
-    import LoadingCenter from './components/LoadingCenter';
-    import DS from './assets/js/api' //引入测试数据
+    import NewsArea from '../components/NewsArea';
+    import NewsDownloadBar from "../components/news-download-bar";
+    import RelatedNews from '../components/RelatedNews';
+    import CommentList from '../components/CommentList';
+    import LoadingCenter from '../components/LoadingCenter';
+    import DS from '../assets/js/api' //引入测试数据
     //userAgent
     var uA = navigator.userAgent;
     //是否为开发环境 上线时请 改为false

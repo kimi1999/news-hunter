@@ -3,10 +3,11 @@
 
 import Vue from 'vue'
 import VueLazyload from 'vue-lazyload'
-import VueResource from 'vue-resource'
 Vue.use(VueLazyload)
+
+import VueResource from 'vue-resource'
 Vue.use(VueResource)
-import ShareApp from './ShareApp'
+import ShareApp from './views/ShareApp'
 const app = new Vue({
     render: (h)=>h(ShareApp)
 }).$mount('#app');

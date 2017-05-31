@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>test</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <style type="text/css">
+    /*****************  reset.css  ********************/
+    /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css*/
+    a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}
+    article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+    body{line-height:1}
+    ol,ul{list-style:none}
+    blockquote,q{quotes:none}
+    blockquote:after,blockquote:before,q:after,q:before{content:'';content:none}
+    table{border-collapse:collapse;border-spacing:0}
+    html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}
+    body{margin:0}
+    article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}
+    audio,canvas,progress,video{display:inline-block;vertical-align:baseline}
+    audio:not([controls]){display:none;height:0}
+    [hidden],template{display:none}
+    a{background-color:transparent}
+    a:active,a:hover{outline:0}
+    abbr[title]{border-bottom:1px dotted}
+    b,strong{font-weight:700}
+    dfn{font-style:italic}
+    h1{font-size:2em;margin:.67em 0}
+    mark{background:#ff0;color:#000}
+    small{font-size:80%}
+    sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+    sup{top:-.5em}
+    sub{bottom:-.25em}
+    img{border:0}
+    svg:not(:root){overflow:hidden}
+    figure{margin:1em 40px}
+    hr{box-sizing:content-box;height:0}
+    pre{overflow:auto}
+    code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}
+    button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}
+    button{overflow:visible}
+    button,select{text-transform:none}
+    button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
+    button[disabled],html input[disabled]{cursor:default}
+    button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+    input{line-height:normal}
+    input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0}
+    input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{height:auto}
+    input[type=search]{-webkit-appearance:textfield;box-sizing:content-box}
+    input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none}
+    fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+    legend{border:0;padding:0}
+    textarea{overflow:auto}
+    optgroup{font-weight:700}
+    table{border-collapse:collapse;border-spacing:0}
+    td,th{padding:0}
+
+    .f-cb:after,
+    .f-cbli li:after {
+      display: block;
+      clear: both;
+      visibility: hidden;
+      height: 0;
+      overflow: hidden;
+      content: ".";
+    }
+    .f-cb,
+    .f-cbli li {
+      zoom: 1;
+    }
+    .fr{
+      float: right;
+    }
+
+    .ellipsis-1{
+      overflow: hidden;
+      text-overflow:ellipsis;
+      white-space: nowrap;
+    }
+    .ellipsis-2{
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+    .ellipsis-3{
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+    }
+
+    .u-outer-cont {
+      width: 300px;
+      height: auto;
+      margin: 0 auto;
+      margin-top: 100px;
+    }
+
+    /* class="flex-box flex-justify-center flex-align-center" 垂直水平都居中布局 */
+
+    /*************  flex 布局 水平、垂直居中  **************/
+    .flex-box{
+      -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+      align-items: stretch;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+    }
+    /* 水平居中 */
+    .flex-justify-center{
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+    }
+    /* 垂直居中 */
+    .flex-align-center{
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+    }
+    /*************  frozenui border  **************/
+    .ui-border-t {
+      border-top: 1px solid #e0e0e0
+    }
+
+    .ui-border-b {
+      border-bottom: 1px solid #e0e0e0
+    }
+
+    .ui-border-tb {
+      border-top: #e0e0e0 1px solid;
+      border-bottom: #e0e0e0 1px solid;
+      background-image: none
+    }
+
+    .ui-border-l {
+      border-left: 1px solid #e0e0e0
+    }
+
+    .ui-border-r {
+      border-right: 1px solid #e0e0e0
+    }
+
+    .ui-border {
+      border: 1px solid #e0e0e0
+    }
+
+    .ui-border-radius {
+      border: 1px solid #e0e0e0;
+      border-radius: 4px
+    }
+
+    @media screen and (-webkit-min-device-pixel-ratio: 2) {
+      .ui-border-radius {
+        position:relative;
+        border: 0
+      }
+
+      .ui-border-radius:before {
+        content: "";
+        width: 200%;
+        height: 200%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border: 1px solid #e0e0e0;
+        -webkit-transform: scale(0.5);
+        -webkit-transform-origin: 0 0;
+        padding: 1px;
+        -webkit-box-sizing: border-box;
+        border-radius: 8px;
+        pointer-events: none
+      }
+    }
+
+    @media screen and (-webkit-min-device-pixel-ratio: 2) {
+      .ui-border {
+        position:relative;
+        border: 0
+      }
+
+      .ui-border-t,.ui-border-b,.ui-border-l,.ui-border-r,.ui-border-tb {
+        border: 0
+      }
+
+      .ui-border-t {
+        background-position: left top;
+        background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.5,transparent),color-stop(0.5,#e0e0e0),to(#e0e0e0))
+      }
+
+      .ui-border-b {
+        background-position: left bottom;
+        background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0.5,transparent),color-stop(0.5,#e0e0e0),to(#e0e0e0))
+      }
+
+      .ui-border-t,.ui-border-b,.ui-border-tb {
+        background-repeat: repeat-x;
+        /*-webkit-background-size: 100% 1px;*/
+        -webkit-background-size: 100% 2px
+      }
+
+      .ui-border-tb {
+        background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.5,transparent),color-stop(0.5,#e0e0e0),to(#e0e0e0)),-webkit-gradient(linear,left top,left bottom,color-stop(0.5,transparent),color-stop(0.5,#e0e0e0),to(#e0e0e0));
+        background-position: top,bottom
+      }
+
+      .ui-border-l {
+        background-position: left top;
+        background-image: -webkit-gradient(linear,right top,left top,color-stop(0.5,transparent),color-stop(0.5,#e0e0e0),to(#e0e0e0))
+      }
+
+      .ui-border-r {
+        background-position: right top;
+        background-image: -webkit-gradient(linear,left top,right top,color-stop(0.5,transparent),color-stop(0.5,#e0e0e0),to(#e0e0e0))
+      }
+
+      .ui-border-l,.ui-border-r {
+        background-repeat: repeat-y;
+        -webkit-background-size: 1px 100%
+      }
+      .ui-border:after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0.5,transparent),color-stop(0.5,#e0e0e0),to(#e0e0e0)),-webkit-gradient(linear,left top,right top,color-stop(0.5,transparent),color-stop(0.5,#e0e0e0),to(#e0e0e0)),-webkit-gradient(linear,left top,left bottom,color-stop(0.5,transparent),color-stop(0.5,#e0e0e0),to(#e0e0e0)),-webkit-gradient(linear,right top,left top,color-stop(0.5,transparent),color-stop(0.5,#e0e0e0),to(#e0e0e0));
+        -webkit-background-size: 100% 1px,1px 100%,100% 1px,1px 100%;
+        background-size: 100% 1px,1px 100%,100% 1px,1px 100%;
+        -webkit-background-size: 100% 1px,1px 100%,100% 1px,1px 100%;
+        background-size: 100% 1px,1px 100%,100% 1px,1px 100%;
+        background-repeat: no-repeat;
+        background-position: top,right,bottom,left;
+        padding: 1px;
+        -webkit-box-sizing: border-box;
+        z-index: 10;
+        pointer-events: none
+      }
+    }
+
+
+    .video-item {
+      padding-bottom: 3px;
+    }
+    .yt-iframe-wrapper {
+      width: 100%;
+      position: relative;
+      background-color: #000;
+    }
+    .control-bar {
+      position: relative;
+      width: 100%;
+      height: 40px;
+      box-sizing: border-box;
+      padding: 0 12px;
+      line-height: 40px;
+    }
+    .control-bar .source,
+    .control-bar .time {
+      display: inline-block;
+      opacity: 0.5;
+      font-size: 14px;
+      color: #222222;
+      letter-spacing: 0;
+    }
+    .control-bar .time {
+      margin-left: 10px;
+    }
+    .control-bar .share,
+    .control-bar .collection {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: 8px;
+      background-size: cover!important;
+    }
+    .control-bar .share {
+      right: 12px;
+      background: url("http://static.news.apuslauncher.com/upload/news/20170518164719e5eb1f3bb4.png");
+    }
+    .control-bar .collection {
+      right: 56px;
+      background: url("http://static.news.apuslauncher.com/upload/news/20170518164613ba694d10a7.png");
+    }
+    .cover-box{
+      position: absolute;
+      top:0;
+      left: 0;
+      z-index: 999;
+      width: 100%;
+      height: 100%;
+      background-size: cover!important;
+    }
+    .cover-box .play-btn{
+      position: absolute;
+      left: 50%;
+      top:50%;
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      margin-left: -25px;
+      margin-top: -25px;
+      background: url("http://static.news.apuslauncher.com/upload/news/20170519153016fea3cad30a.png");
+      background-size: 50px 50px;
+    }
+
+  </style>
+  <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+<body>
+<div class="video-item">
+  <div class="yt-iframe-wrapper">
+    <div id="playerBox">
+
+    </div>
+  </div>
+  <div class="cover-box">
+    <a href="javascript:void(0)" class="play-btn" onclick="onVideoPlay()"></a>
+  </div>
+  <div class="control-bar ui-border-b">
+    <span class="source">BBC</span>
+    <span class="time">1 minute ago</span>
+    <a href="javascript:void(0)" class="share"></a>
+    <a href="javascript:void(0)" class="collection"></a>
+  </div>
+</div>
+<script type="text/javascript">
+  /* 视频配置文件 */
+  var vConfig = {
+    ratio: "360:200",//视频宽高比
+    width:360, //视频宽度
+    height:200, //视频高度
+    video:{
+      id: "M7lc1UVf-VE", //视频id
+      cover:"http://static.news.apuslauncher.com/upload/news/201705191515419c9f292c2b.png"//视频封面
+    }
+  }
+
+  /* 原生js 工具函数 */
+  function getElementsByClass(sClass){
+    var aResult=[];
+    var aEle=document.all ? document.all : document.getElementsByTagName('*');
+    for(var i=0;i<aEle.length;i++){
+      /*当className相等时添加到数组中*/
+      if(aEle[i].className==sClass){
+        aResult.push(aEle[i]);
+      }
+    }
+    return aResult;
+  };
+  var videoCover = null;
+  if(true){
+    var iFrameWrappers = getElementsByClass("yt-iframe-wrapper");
+    var windowWidth = document.documentElement.clientWidth;
+    for(var i=0; i<iFrameWrappers.length; i++){
+      iFrameWrappers[i].style.height=vConfig.height*windowWidth/vConfig.width+"px";
+    }
+    var coverBox = getElementsByClass("cover-box");
+    if(coverBox[0]){
+      videoCover = coverBox[0];
+      videoCover.style.background = 'url("'+vConfig.video.cover+'")';
+    }
+  }
+
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('playerBox', {
+      height: '100%',
+      width: '100%',
+      videoId: vConfig.video.id,
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange,
+        'onPlaybackQualityChange': onPlayerPlaybackQualityChange,
+        'onPlaybackRateChange': onPlayerPlaybackRateChange,
+        'onError': onPlayerError,
+        'onApiChange': onPlayerApiChange
+      },
+      playerVars: {
+        'autoplay': 0,// 是否自动播放 默认：0 否； 1 是
+        'autohide': 1,//播放开始时 播放控制条是否自动隐藏 默认：1 是； 0 否
+        'rel': 0,//播放结束时 是否显示相关视频 默认：1 是； 0 否
+        'showinfo': 0,// 视频播放前是否显示视频标题和上传者信息 默认：1 是； 0 否
+        'enablejsapi': 0,// 停用Javascript API 默认：0 否； 1 是
+        'disablekb': 1,// 停用播放器键盘控件 默认：0 否； 1 是  (空格键：播放/暂停 向左箭头：当前视频后退10% 向右箭头：当前视频前进10% 向上箭头：调高音量 向下箭头：降低音量)
+        'cc_lang_pref': 1,// ???
+        'color': 'white',//  播放器 已播放部分颜色 可选红色(不写或其他非'white' 值)/白色('white') 默认红色
+        'controls': 0,//此参数会指明视频播放器控件是否会显示  值：0、1或2。默认值为1
+        'fs': 1,//：0或1。默认值为1，该值会使全屏按钮显示。将此参数设为0会阻止全屏按钮显示。
+        'cc_load_policy': 1,// 是否显示字幕  将此值设为1会使系统在默认情况下显示字幕，即使在用户关闭字幕的情况下也是如此
+        'modestbranding':1,//播放控制条上是否显示 youtube图标 默认 0: 显示 ；1: 不显示；
+        'origin': 'https://www.youtube.com'
+      }
+    });
+  }
+
+  // (1)  播放器准备就绪
+  function onPlayerReady(event) {
+    console.log('player is ready');
+    //onReady('player is ready');
+    //sendDuration();
+    player.setOption("captions", "track", {"languageCode": "es"});
+    player.unloadModule("captions");
+    //设置音量0-100   getVolume() 获取音量
+    player.setVolume(30);
+    //player.setVolume([AUDIO_VOLUME]);
+  }
+
+  // (2) 播放状态改变时
+  var timerId = 0;
+  function onPlayerStateChange(event) {
+    console.log(event)
+    clearTimeout(timerId);
+    switch (event.data) {
+      case YT.PlayerState.UNSTARTED:
+        //onStateChange("UNSTARTED");
+
+        break;
+      case YT.PlayerState.ENDED:
+        //onStateChange("ENDED");
+
+        break;
+      case YT.PlayerState.PLAYING:
+        player.unloadModule("captions");
+
+        //onStateChange("PLAYING");
+        timerId = setInterval(function () {
+          //setCurrentSeconds();
+
+          //console.log(player.getCurrentTime());
+        }, 100);
+        break;
+      case YT.PlayerState.PAUSED:
+        //onStateChange("PAUSED");
+        break;
+      case YT.PlayerState.BUFFERING:
+        //onStateChange("BUFFERING");
+        break;
+      case YT.PlayerState.CUED:
+        //onStateChange("CUED");
+        break;
+    }
+  }
+
+  // (3) 视频清晰度切换时
+  function onPlayerPlaybackQualityChange(playbackQuality) {
+    console.log('playback quality changed to ' + playbackQuality.data);
+    //onPlaybackQualityChange('playback quality changed to ' + playbackQuality.data);
+  }
+
+  // (4) 播放速率改变时触发
+  function onPlayerPlaybackRateChange(playbackRate) {
+    console.log('playback rate changed to ' + playbackRate.data);
+    //onPlaybackRateChange('playback rate changed to ' + playbackRate.data);
+  }
+
+  // (5) 视频加载错误时触发
+  function onPlayerError(e) {
+    console.log('An error occurred: ' + e.data);
+    //onError('An error occurred: ' + e.data);
+  }
+
+  // (6) 播放器已利用提供的API方法加载（或已取消加载）模块
+  function onPlayerApiChange() {
+    console.log('The player API changed');
+    //onApiChange('The player API changed');
+  }
+
+  //隐藏 视频封面
+  function hideVideoCover(){
+    if(videoCover){
+      videoCover.style.display = "none";
+    }
+  }
+
+  //隐藏 视频封面
+  function showVideoCover(){
+    if(videoCover){
+      videoCover.style.display = "block";
+    }
+  }
+
+
+
+
+  /******************** 调用客户端的方法 start ********************/
+  function onReady(e) {
+    window.QualsonInterface.onReady(e);
+  }
+
+  function onStateChange(e) {
+    window.QualsonInterface.onStateChange(e);
+  }
+
+  function onPlaybackQualityChange(e) {
+    window.QualsonInterface.onPlaybackQualityChange(e);
+  }
+
+  function onPlaybackRateChange(e) {
+    window.QualsonInterface.onPlaybackRateChange(e);
+  }
+
+  function onError(e) {
+    window.QualsonInterface.onError(e);
+  }
+
+  function onApiChange(e) {
+    window.QualsonInterface.onApiChange(e);
+  }
+
+  function setCurrentSeconds() {
+    window.QualsonInterface.currentSeconds(player.getCurrentTime());
+  }
+
+  function sendDuration() {
+    window.QualsonInterface.duration(player.getDuration());
+  }
+
+  function setLog(msg) {
+    window.QualsonInterface.logs(msg);
+  }
+
+  function onSeekTo(startSeconds) {
+    player.seekTo(startSeconds, true)
+  }
+
+  function onVideoPause() {
+    player.pauseVideo();
+  }
+
+  function onVideoStop() {
+    player.stopVideo();
+  }
+
+  function onVideoPlay() {
+    player.playVideo();
+    player.setVolume([AUDIO_VOLUME]);
+  }
+
+  function onHideControls() {
+    setLog("onHideControls()");
+  }
+
+  function loadVideo(videoId, startSeconds) {
+    //setLog(videoId + "_" + startSeconds);
+    player.loadVideoById(videoId, startSeconds);
+  }
+
+  function cueVideo(videoId) {
+    //setLog(videoId);
+    player.cueVideoById(videoId, 0, "large");//视频id 起始时间 视频质量
+    player.setVolume(30);
+    //player.cueVideoById(videoId, 0, "[PLAYBACK_QUALITY]");
+    //player.setVolume([AUDIO_VOLUME]);
+  }
+
+  /******************** 调用客户端的方法 end ********************/
+</script>
+</body>
+</html>
