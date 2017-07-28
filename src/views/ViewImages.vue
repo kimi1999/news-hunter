@@ -165,7 +165,7 @@
   }
 </style>
 
-<script lang="babel">
+<script>
   import Config from '../assets/js/config'
   import appDownload from '../assets/js/apus.appDownload'
   import LoadingCenter from '../components/LoadingCenter.vue'

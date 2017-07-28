@@ -31,7 +31,7 @@
   }
 </style>
 
-<script lang="babel">
+<script>
   import ViewImages from './ViewImages.vue'
   import LoadingPage from '../components/LoadingPage.vue'
   import LoadingCenter from '../components/LoadingCenter.vue'

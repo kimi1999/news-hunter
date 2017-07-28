@@ -19,7 +19,7 @@
     </div>
 </template>
 
-<script lang="babel">
+<script>
     import NewsArea from '../components/NewsArea';
     import NewsDownloadBar from "../components/news-download-bar";
     import RelatedNews from '../components/RelatedNews';
