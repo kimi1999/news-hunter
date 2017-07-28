@@ -37,7 +37,7 @@
         var sizeStr = img.getAttribute('data-size');
         var size = [];
         var src = img.getAttribute('news-image-src');
-        if (sizeStr && img.getAttribute('skip') !== true) {
+        if (sizeStr && img.getAttribute('skip') !== 'true') {
           size = JSON.parse(sizeStr);
           if (size[0] < 30) {
             return
