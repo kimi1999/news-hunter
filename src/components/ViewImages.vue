@@ -168,8 +168,8 @@
 <script>
   import Config from '../assets/js/config'
   import appDownload from '../assets/js/apus.appDownload'
-  import LoadingCenter from '../components/LoadingCenter.vue'
-  import TopTitle from '../components/TopTitle.vue'
+  import LoadingCenter from './LoadingCenter.vue'
+  import TopTitle from './TopTitle.vue'
   import Swiper from '../../static/swiper-3.4.2.min'
   require('../assets/css/swiper-3.4.2.min.css')
 

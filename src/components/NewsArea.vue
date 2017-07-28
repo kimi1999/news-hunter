@@ -6,7 +6,7 @@
     <!--<news-label :tags="data.tags"></news-label>-->
   </section>
 </template>
-<style lang="less" scoped>
+<style lang="less" type="text/less" scoped>
   /* 新闻详情页 新闻主内容区域 */
   .ui-hunter-detail-main {
     width: 100%;

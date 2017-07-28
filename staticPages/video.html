@@ -376,7 +376,7 @@
         'disablekb': 1,// 停用播放器键盘控件 默认：0 否； 1 是  (空格键：播放/暂停 向左箭头：当前视频后退10% 向右箭头：当前视频前进10% 向上箭头：调高音量 向下箭头：降低音量)
         'cc_lang_pref': 1,// ???
         'color': 'white',//  播放器 已播放部分颜色 可选红色(不写或其他非'white' 值)/白色('white') 默认红色
-        'controls': 0,//此参数会指明视频播放器控件是否会显示  值：0、1或2。默认值为1
+        // 'controls': 0,//此参数会指明视频播放器控件是否会显示  值：0、1或2。默认值为1
         'fs': 1,//：0或1。默认值为1，该值会使全屏按钮显示。将此参数设为0会阻止全屏按钮显示。
         'cc_load_policy': 1,// 是否显示字幕  将此值设为1会使系统在默认情况下显示字幕，即使在用户关闭字幕的情况下也是如此
         'modestbranding':1//播放控制条上是否显示 youtube图标 默认 0: 显示 ；1: 不显示；
@@ -556,15 +556,15 @@
   //  全屏
   function playFullscreen (){
     //onVideoPause();
-    if (document.requestFullScreen) {
+    if (iframe.requestFullScreen) {
       iframe.requestFullScreen()
-    } else if (document.mozRequestFullScreen) {
+    } else if (iframe.mozRequestFullScreen) {
       iframe.mozRequestFullScreen()
-    } else if (document.webkitRequestFullScreen) {
+    } else if (iframe.webkitRequestFullScreen) {
       iframe.webkitRequestFullScreen()
-    } else if (document.msRequestFullscreen) {
+    } else if (iframe.msRequestFullscreen) {
       iframe.msRequestFullscreen()
-    } else if (document.oRequestFullscreen) {
+    } else if (iframe.oRequestFullscreen) {
       iframe.oRequestFullscreen()
     }
 //    var requestFullScreen = iframe.requestFullScreen
@@ -652,8 +652,13 @@
     var aEle=document.all ? document.all : document.getElementsByTagName('*');
     for(var i=0;i<aEle.length;i++){
       /*当className相等时添加到数组中*/
-      if(aEle[i].className==sClass){
-        aResult.push(aEle[i]);
+      if (aEle[i].className && (typeof aEle[i].className) === 'string') {
+        var classList = aEle[i].className.split(' ')
+        for (var j = 0; j < classList.length; j++) {
+          if (classList[j] === sClass) {
+            aResult.push(aEle[i])
+          }
+        }
       }
     }
     return aResult;

@@ -1,6 +1,7 @@
 <template>
+  <!-- 分享落地页 文字，图片自由堆叠 -->
     <div class="app">
-       <div v-if="testType&&false" style="height:200px;padding:20px; word-break:break-all; box-sizing:border-box; border:1px solid red;">
+       <div v-if="testType" style="height:200px;padding:20px; word-break:break-all; box-sizing:border-box; border:1px solid red;">
           {{uA}}
        </div>
         <!-- 页面等待动画 -->
@@ -20,6 +21,7 @@
 </template>
 
 <script>
+    import Config from '../assets/js/config'
     import NewsArea from '../components/NewsArea';
     import NewsDownloadBar from "../components/news-download-bar";
     import RelatedNews from '../components/RelatedNews';
@@ -29,7 +31,8 @@
     //userAgent
     var uA = navigator.userAgent;
     //是否为开发环境 上线时请 改为false
-    var testType = true;
+    console.log(Config.URI.ev)
+    var testType = Config.URI.ev === 'test' ? true : false;
     if(testType){
       setTimeout(function(){
         document.getElementById("pageDataCont").innerHTML = DS.htmlStr;

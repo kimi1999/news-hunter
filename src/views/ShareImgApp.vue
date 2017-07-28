@@ -1,4 +1,5 @@
 <template>
+  <!-- 分享落地页 直接查看大图 -->
   <div class="main-content" id="shareApp">
     <div  class="play-img-box" v-if="imgList[0]"  :style="lineStyle">
       <ViewImages :page-data="pageData" :img-list="imgList"></ViewImages>
@@ -32,7 +33,7 @@
 </style>
 
 <script>
-  import ViewImages from './ViewImages.vue'
+  import ViewImages from '../components/ViewImages.vue'
   import LoadingPage from '../components/LoadingPage.vue'
   import LoadingCenter from '../components/LoadingCenter.vue'
   import Config from '../assets/js/config'
